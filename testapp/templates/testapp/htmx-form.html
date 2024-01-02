@@ -1,0 +1,19 @@
+{% extends framework|default:"testapp"|add:"/base.html" %}
+{% load django_htmx %}
+
+
+{% block main-content %}
+<button hx-target="django-formset"
+				hx-swap="outerHTML"
+				hx-get="{{request.path}}"
+				hx-trigger="click"
+				hx-indicator=".htmx-indicator">
+	HTMX Reload
+</button>
+<span class='htmx-indicator'>(fetching)</span>
+
+{% include "testapp/htmx-partial.html" %}
+
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+{% django_htmx_script %}
+{% endblock %}

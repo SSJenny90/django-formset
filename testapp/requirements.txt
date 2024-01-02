@@ -17,3 +17,4 @@ pytest-mock==3.11.1
 soupsieve==2.5
 sqlparse==0.4.4
 typing_extensions==4.8.0
+django-htmx==1.17.2

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'formset',
     'testapp',
     'django_countries',
+    "django_htmx",
 ]
 try:
     import sphinx_view
@@ -71,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 USE_I18N = True

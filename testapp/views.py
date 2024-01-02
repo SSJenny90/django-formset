@@ -310,6 +310,18 @@ class GalleryCollectionView(DemoFormCollectionViewMixin, SessionFormCollectionVi
     }
 
 
+class HTMXFormView(DemoFormView):
+
+    template_name = 'testapp/htmx-form.html'
+
+    def get_template_names(self):
+        if self.request.htmx:
+            import time
+            time.sleep(0.2) # for sanity/seeing the htmx indicator next to the reload button
+            return ['testapp/htmx-partial.html']
+        return super().get_template_names()
+
+
 demo_css_classes = {
     'default': {'*': {}},
     'bootstrap': {
@@ -589,4 +601,7 @@ urlpatterns = [
     ), name='button-actions'),
     path('gallerycollection', GalleryCollectionView.as_view(
     ), name='gallerycollection'),
+    path('htmx', HTMXFormView.as_view(
+        form_class=OpinionForm,
+    ), name='htmx'),
 ]
